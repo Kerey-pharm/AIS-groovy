@@ -1,0 +1,5 @@
+rootProject.name = 'groovy-rest'
+include 'persistence'
+include 'interfaces'
+include 'services'
+

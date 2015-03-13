@@ -1,0 +1,60 @@
+allprojects {
+    apply plugin: 'groovy'
+
+    project.ext.deployment = "../totalBuild"
+
+    repositories {
+        maven {
+            url 'http://repo1.maven.org/maven2/'
+        }
+        maven {
+            url 'https://repository.jboss.org/nexus/content/groups/public-jboss'
+        }
+    }
+
+    dependencies {
+        compile 'org.codehaus.groovy:groovy-all:2.4.1'
+    }
+
+    processResources {
+        from ('src/main/groovy') {
+            include '**/*.xml'
+            include '**/*.properties'
+        }
+    }
+
+    if (['persistence','interfaces'].contains(project.name)) {
+        task deploy (type: Copy, dependsOn: build) {
+            from jar.archivePath
+            into deployment
+        }
+    }
+
+    if (['services'].contains(project.name)) {
+        apply plugin: 'war'
+        task deploy (type: Copy, dependsOn: build) {
+            from war.archivePath
+            into deployment
+        }
+    }
+
+    sourceSets {
+        main {
+            groovy {
+                srcDirs = ['src/main/groovy']
+            }
+            java {
+                srcDirs = ['src/main/java']
+            }
+        }
+        test {
+            groovy {
+                srcDirs = ['src/test/groovy']
+            }
+            java {
+                srcDirs = ['src/test/java']
+            }
+        }
+    }
+
+}
