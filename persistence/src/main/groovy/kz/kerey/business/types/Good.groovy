@@ -1,29 +1,28 @@
-package kz.kerey.entities
+package kz.kerey.business.types
 
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.ManyToMany
+import javax.persistence.ManyToOne
 
-/**
- * Created by dmussa on 3/13/2015.
- */
 @Entity
 class Good {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id
 
     @ManyToMany(fetch=FetchType.LAZY, targetEntity=GoodType.class)
-    List<GoodType> types;
+    List<GoodType> types
 
-    String name;
-    String primaryBarcode;
-    Boolean partialSelling;
-    Long countPerBox;
-    Long countSellable;
+	String name
+	String primaryBarcode
+	Boolean partialSelling
+	Long countPerBox
+	Long countSellable
 
 }

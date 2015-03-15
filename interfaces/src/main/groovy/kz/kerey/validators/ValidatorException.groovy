@@ -1,8 +1,10 @@
 package kz.kerey.validators
 
+import kz.kerey.constants.Constants
+
 class ValidatorException extends RuntimeException {
 
-	Long errorCode
+    Constants errorCode
     String comment
 
 }

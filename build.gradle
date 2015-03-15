@@ -1,7 +1,11 @@
 allprojects {
     apply plugin: 'groovy'
 
-    project.ext.deployment = "../totalBuild"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    //project.ext.deployment = "../totalBuild"
+    project.ext.deployment = "/Users/Alina/github/jboss-eap-6.4/standalone/deployments"
 
     repositories {
         maven {
@@ -20,13 +24,6 @@ allprojects {
         from ('src/main/groovy') {
             include '**/*.xml'
             include '**/*.properties'
-        }
-    }
-
-    if (['persistence','interfaces'].contains(project.name)) {
-        task deploy (type: Copy, dependsOn: build) {
-            from jar.archivePath
-            into deployment
         }
     }
 

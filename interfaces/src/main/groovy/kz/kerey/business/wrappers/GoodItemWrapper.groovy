@@ -1,11 +1,11 @@
 package kz.kerey.business.wrappers
 
-import java.io.Serializable
-import java.util.Date
-
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAccessorType
 import javax.xml.bind.annotation.XmlRootElement
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 class GoodItemWrapper implements Serializable {
 
 	Long id
