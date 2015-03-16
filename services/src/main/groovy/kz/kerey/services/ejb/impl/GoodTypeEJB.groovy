@@ -53,22 +53,21 @@ class GoodTypeEJB {
 	
 	List<GoodTypeWrapper> getGoodTypeList(Boolean paged, Integer pageNum, Integer perPage) {
 		def em
-		def result = new ArrayList<GoodTypeWrapper>()
+		def result = []
 		try {
 			em = emf.createEntityManager()
 			def query = em.createQuery("from GoodType order by name")
 			if (paged) {
 				query = query.setFirstResult(perPage * (pageNum - 1))
-						.setMaxResults(perPage)
+                        .setMaxResults(perPage)
 			}
 			def list = query.getResultList()
-			for(GoodType type in list) {
-				result.add(new GoodTypeWrapper(id: type.id, name: type.name))
-			}
+            list.each {
+                result = result + [new GoodTypeWrapper(id: it.id, name: it.name)]
+            }
 		}
 		finally {
-            if (em!=null && em.isOpen())
-                em.close()
+            !(em!=null && em.isOpen()) ?: em.close()
 		}
         result
 	}
