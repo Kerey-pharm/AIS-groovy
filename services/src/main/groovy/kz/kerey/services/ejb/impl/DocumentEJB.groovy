@@ -2,14 +2,15 @@ package kz.kerey.services.ejb.impl
 
 import javax.annotation.Resource
 import javax.ejb.Local
-import javax.ejb.Singleton
 
 import kz.kerey.business.types.documents.Document
 import kz.kerey.business.wrappers.DocumentWrapper
 import kz.kerey.constants.Constants
 import kz.kerey.exceptions.ServicesException
 
-@Singleton
+import javax.ejb.Stateless
+
+@Stateless
 @Local(DocumentEJB.class)
 class DocumentEJB {
 

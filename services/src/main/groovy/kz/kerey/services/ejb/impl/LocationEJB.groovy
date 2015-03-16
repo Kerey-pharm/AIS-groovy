@@ -2,7 +2,6 @@ package kz.kerey.services.ejb.impl
 
 import javax.annotation.Resource
 import javax.ejb.Local
-import javax.ejb.Singleton
 
 import kz.kerey.business.types.enums.LocationProperty
 import kz.kerey.business.types.points.Location
@@ -10,7 +9,9 @@ import kz.kerey.business.wrappers.LocationWrapper
 import kz.kerey.constants.Constants
 import kz.kerey.exceptions.ServicesException
 
-@Singleton
+import javax.ejb.Stateless
+
+@Stateless
 @Local(LocationEJB.class)
 class LocationEJB {
 

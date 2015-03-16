@@ -12,9 +12,9 @@ import kz.kerey.flow.Ladder
 import kz.kerey.flow.Step
 
 import javax.ejb.Local
-import javax.ejb.Singleton
+import javax.ejb.Stateless
 
-@Singleton
+@Stateless
 @Local(FlowConfigurationEJB.class)
 class FlowConfigurationEJB {
 

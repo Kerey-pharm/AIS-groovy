@@ -2,7 +2,6 @@ package kz.kerey.services.ejb.impl
 
 import javax.annotation.Resource
 import javax.ejb.Local
-import javax.ejb.Singleton
 
 import kz.kerey.business.types.PageParam
 import kz.kerey.business.types.enums.TaskProperty
@@ -14,7 +13,9 @@ import kz.kerey.exceptions.ServicesException
 import kz.kerey.flow.Ladder
 import kz.kerey.tools.BarcodeTool
 
-@Singleton
+import javax.ejb.Stateless
+
+@Stateless
 @Local(FlowEJB.class)
 class FlowEJB {
 

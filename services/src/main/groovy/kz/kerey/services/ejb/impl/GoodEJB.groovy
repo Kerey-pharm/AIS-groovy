@@ -2,7 +2,6 @@ package kz.kerey.services.ejb.impl
 
 import javax.annotation.Resource
 import javax.ejb.Local
-import javax.ejb.Singleton
 
 import kz.kerey.business.types.Good
 import kz.kerey.business.types.PageParam
@@ -12,7 +11,9 @@ import kz.kerey.constants.Constants
 import kz.kerey.exceptions.ServicesException
 import kz.kerey.tools.ClassTool
 
-@Singleton
+import javax.ejb.Stateless
+
+@Stateless
 @Local(GoodEJB.class)
 class GoodEJB {
 
