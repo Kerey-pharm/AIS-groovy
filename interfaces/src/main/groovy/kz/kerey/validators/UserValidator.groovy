@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class UserValidator extends Validator<UserWrapper> {
 
-	static UserValidator validator = new UserValidator()
-	static UserValidator getValidator() {
-		validator
-	}
+	def static validator = new UserValidator()
+	private UserValidator() {}
 	
 	@Override
 	void validate(UserWrapper t) throws ValidatorException {

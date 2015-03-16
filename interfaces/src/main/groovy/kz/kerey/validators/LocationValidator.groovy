@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class LocationValidator extends Validator<LocationWrapper> {
 
-	static LocationValidator validator = new LocationValidator()
-	static LocationValidator getValidator() {
-		validator
-	}
+	def static validator = new LocationValidator()
+	private LocationValidator() {}
 	
 	void validate(LocationWrapper t) throws ValidatorException {
 		if (t==null)

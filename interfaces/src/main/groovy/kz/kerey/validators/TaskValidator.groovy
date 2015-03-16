@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class TaskValidator extends Validator<TaskWrapper> {
 
-	static TaskValidator validator = new TaskValidator()
-	static TaskValidator getValidator() {
-		validator
-	}
+	def static validator = new TaskValidator()
+	private TaskValidator() {}
 	
 	@Override
 	void validate(TaskWrapper t) throws ValidatorException {

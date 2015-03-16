@@ -5,12 +5,9 @@ import kz.kerey.constants.Constants
 
 class DocumentValidator extends Validator<DocumentWrapper> {
 
-	static DocumentValidator validator = new DocumentValidator()
+	def static validator = new DocumentValidator()
+    private DocumentValidator() {}
 
-	static DocumentValidator getValidator() {
-		return validator;
-	}
-	
 	@Override
 	void validate(DocumentWrapper t) throws ValidatorException {
 		if (t==null)

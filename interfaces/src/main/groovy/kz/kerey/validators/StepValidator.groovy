@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class StepValidator extends Validator<StepWrapper> {
 
-	static StepValidator validator = new StepValidator()
-	static StepValidator getValidator() {
-		validator
-	}
+	def static validator = new StepValidator()
+	private StepValidator() {}
 	
 	@Override
 	void validate(StepWrapper t) throws ValidatorException {

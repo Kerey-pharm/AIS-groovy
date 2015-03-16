@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class RoleValidator extends Validator<RoleWrapper> {
 
-	static RoleValidator validator = new RoleValidator()
-	static RoleValidator getValidator() {
-		validator
-	}
+	def static validator = new RoleValidator()
+	private RoleValidator() {}
 	
 	@Override
 	void validate(RoleWrapper t) throws ValidatorException {

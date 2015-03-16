@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class GoodTypeValidator extends Validator<GoodTypeWrapper> {
 
-	static GoodTypeValidator validator = new GoodTypeValidator()
-	static GoodTypeValidator getValidator() {
-		validator
-	}
+	def static validator = new GoodTypeValidator()
+	private GoodTypeValidator() {}
 	
 	@Override
 	void validate(GoodTypeWrapper t) throws ValidatorException {

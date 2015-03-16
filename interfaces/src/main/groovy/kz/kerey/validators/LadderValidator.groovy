@@ -5,10 +5,8 @@ import kz.kerey.constants.Constants
 
 class LadderValidator extends Validator<LadderWrapper> {
 
-	static LadderValidator validator = new LadderValidator();
-	static LadderValidator getValidator() {
-		validator
-	}
+	def static validator = new LadderValidator();
+	private LadderValidator() {}
 	
 	@Override
 	void validate(LadderWrapper t) throws ValidatorException {
