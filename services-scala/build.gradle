@@ -1,7 +1,8 @@
 apply plugin: 'scala'
 
 dependencies {
-    compile 'org.scala-lang:scala-library-all:2.11.6'
+    compile 'org.scala-lang:scala-library-all:2.11.6',
+            'com.typesafe.slick:slick_2.11:2.1.0'
 }
 
 sourceSets {

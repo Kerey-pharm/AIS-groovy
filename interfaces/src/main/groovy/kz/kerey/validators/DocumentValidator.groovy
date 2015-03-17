@@ -3,13 +3,10 @@ package kz.kerey.validators
 import kz.kerey.business.wrappers.DocumentWrapper
 import kz.kerey.constants.Constants
 
-class DocumentValidator extends Validator<DocumentWrapper> {
+@Singleton
+class DocumentValidator implements Validator<DocumentWrapper> {
 
-	def static validator = new DocumentValidator()
-    private DocumentValidator() {}
-
-	@Override
-	void validate(DocumentWrapper t) throws ValidatorException {
+	def validate(DocumentWrapper t) throws ValidatorException {
 		if (t==null)
 			throw new ValidatorException(Constants.objectIsNull, "Doc is NULL")
 		if (t.getData()==null || t.getData().length==0)

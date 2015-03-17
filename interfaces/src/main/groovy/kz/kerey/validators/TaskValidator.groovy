@@ -3,13 +3,10 @@ package kz.kerey.validators
 import kz.kerey.business.wrappers.TaskWrapper
 import kz.kerey.constants.Constants
 
-class TaskValidator extends Validator<TaskWrapper> {
+@Singleton
+class TaskValidator implements Validator<TaskWrapper> {
 
-	def static validator = new TaskValidator()
-	private TaskValidator() {}
-	
-	@Override
-	void validate(TaskWrapper t) throws ValidatorException {
+	def validate(TaskWrapper t) throws ValidatorException {
 		
 		if (t==null)
 			throw new ValidatorException(Constants.objectIsNull, "Task is NULL")

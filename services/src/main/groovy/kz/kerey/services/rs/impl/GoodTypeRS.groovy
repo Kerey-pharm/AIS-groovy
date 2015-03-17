@@ -46,22 +46,19 @@ class GoodTypeRS {
 	
 	@POST
 	void createGoodType(GoodTypeWrapper goodType) {
-		try {
-            GoodTypeValidator.validator.validate(goodType)
+        try {
+            GoodTypeValidator.instance.validate(goodType)
 			bean.createGoodType(goodType)
-		} catch (ValidatorException ex) {
-			try {
-				response.sendError(HttpServletResponse.SC_BAD_REQUEST, ex.comment)
-			} catch (IOException e) {
-				logger.severe(e.message)
-			}
-		} catch (ServicesException ex) {
-			try {
-				response.sendError(HttpServletResponse.SC_CONFLICT,
-						ex.comment)
-			} catch (IOException e) {
-				logger.severe(e.message)
-			}
+		} catch (ex) {
+            if (ex instanceof RuntimeException) {
+                response.sendError(HttpServletResponse.SC_CONFLICT, ex.getCause().comment)
+            }
+            else if (ex instanceof ValidatorException) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, ex.comment)
+            }
+            else {
+                response.sendError(HttpServletResponse.SC_CONFLICT, "Unknown Exception. Look logs")
+            }
 		}
 	}
 	
@@ -109,10 +106,10 @@ class GoodTypeRS {
 		}
 		try {
 			bean.deleteGoodType(id)
-		} catch (ServicesException ex) {
+		} catch (RuntimeException ex) {
 			try {
 				response.sendError(HttpServletResponse.SC_CONFLICT,
-						ex.comment)
+                        ex.getCause().comment)
 			} catch (IOException e) {
 				logger.severe(e.message)
 			}

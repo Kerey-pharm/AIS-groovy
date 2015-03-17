@@ -3,13 +3,10 @@ package kz.kerey.validators
 import kz.kerey.business.wrappers.GoodWrapper
 import kz.kerey.constants.Constants
 
-class GoodValidator extends Validator<GoodWrapper> {
-	
-	def static validator = new GoodValidator()
-	private GoodValidator() {}
-	
-	@Override
-	void validate(GoodWrapper t) throws ValidatorException {
+@Singleton
+class GoodValidator implements Validator<GoodWrapper> {
+
+	def validate(GoodWrapper t) throws ValidatorException {
 		if (t==null)
 			throw new ValidatorException(Constants.objectIsNull, "objectIsNull")
 		if (t.getName()==null || t.getName().trim().length()==0)

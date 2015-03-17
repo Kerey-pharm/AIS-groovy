@@ -45,7 +45,7 @@ class DocumentRS {
 	@POST
 	void saveDocument(DocumentWrapper doc) {
 		try {
-            DocumentValidator.validator.validate(doc)
+            DocumentValidator.instance.validate(doc)
 			bean.saveDocument(doc)
 		} catch (ValidatorException ex) {
 			try {

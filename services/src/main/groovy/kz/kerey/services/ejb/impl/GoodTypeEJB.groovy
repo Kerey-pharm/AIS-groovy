@@ -25,9 +25,8 @@ class GoodTypeEJB {
 					.setParameter("text1", type.name.toLowerCase())
 					.getResultList()
 			if (list.size()>0)
-				throw new ServicesException(Constants.objectExists, "GoodType with name:${type.name} exists")
-			def obj = new GoodType(name: type.name)
-			em.persist obj
+                throw new ServicesException(errorCode: Constants.objectExists, comment: "GoodType with name:${type.name} exists")
+			em.persist new GoodType(name: type.name)
 		}
 		finally {
 			if (em!=null && em.isOpen())
@@ -41,7 +40,7 @@ class GoodTypeEJB {
 			em = emf.createEntityManager()
 			def obj = em.find(GoodType.class, id)
 			if (obj==null)
-				throw new ServicesException(Constants.objectIsNull, "GoodType with ID:${id} is NULL")
+				throw new ServicesException(errorCode: Constants.objectIsNull, comment: "GoodType with ID:${id} is NULL")
 			em.remove obj
 		}
 		finally {
@@ -77,7 +76,7 @@ class GoodTypeEJB {
 			em = emf.createEntityManager()
 			def obj = em.find(GoodType.class, id)
 			if (obj==null)
-				throw new ServicesException(Constants.objectIsNull, "GoodType with ID:${id} is NULL")
+				throw new ServicesException(errorCode: Constants.objectIsNull, comment: "GoodType with ID:${id} is NULL")
 			em.createQuery("update GoodType set ${property.toString()}=:value where id=:idValue")
 				.setParameter("value", newValue)
 				.setParameter("idValue", id)

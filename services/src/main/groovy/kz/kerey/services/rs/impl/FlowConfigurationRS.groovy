@@ -52,7 +52,7 @@ class FlowConfigurationRS {
 	@POST
 	void createLadder(LadderWrapper ladder) {
 		try {
-            LadderValidator.validator.validate(ladder)
+            LadderValidator.instance.validate(ladder)
 			bean.createLadder(ladder)
 		}
 		catch (ValidatorException ex) {
@@ -167,7 +167,7 @@ class FlowConfigurationRS {
 	@POST
 	void createStep(StepWrapper step) {
 		try {
-            StepValidator.validator.validate(step)
+            StepValidator.instance.validate(step)
 			bean.createStep(step)
 		}
 		catch (ValidatorException ex) {

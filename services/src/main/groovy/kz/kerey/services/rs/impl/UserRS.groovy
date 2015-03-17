@@ -52,7 +52,7 @@ class UserRS {
 	@POST
 	void createRole(RoleWrapper obj) {
 		try {
-            RoleValidator.validator.validate(obj)
+            RoleValidator.instance.validate(obj)
 			bean.createRole(obj)
 		}
 		catch (ValidatorException ex) {
@@ -167,7 +167,7 @@ class UserRS {
 	@POST
 	void createUser(UserWrapper obj) {
 		try {
-            UserValidator.validator.validate(obj)
+            UserValidator.instance.validate(obj)
 			bean.createUser(obj)
 		}
 		catch (ValidatorException ex) {

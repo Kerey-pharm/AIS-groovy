@@ -3,13 +3,10 @@ package kz.kerey.validators
 import kz.kerey.business.wrappers.RoleWrapper
 import kz.kerey.constants.Constants
 
-class RoleValidator extends Validator<RoleWrapper> {
+@Singleton
+class RoleValidator implements Validator<RoleWrapper> {
 
-	def static validator = new RoleValidator()
-	private RoleValidator() {}
-	
-	@Override
-	void validate(RoleWrapper t) throws ValidatorException {
+	def validate(RoleWrapper t) throws ValidatorException {
 		if (t==null)
 			throw new ValidatorException(Constants.objectIsNull, "Role object is null")
 		if (t.getName()==null || t.getName().trim().length()==0)

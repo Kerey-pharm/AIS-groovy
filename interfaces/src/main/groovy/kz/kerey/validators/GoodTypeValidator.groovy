@@ -3,17 +3,14 @@ package kz.kerey.validators
 import kz.kerey.business.wrappers.GoodTypeWrapper
 import kz.kerey.constants.Constants
 
-class GoodTypeValidator extends Validator<GoodTypeWrapper> {
+@Singleton
+class GoodTypeValidator implements Validator<GoodTypeWrapper> {
 
-	def static validator = new GoodTypeValidator()
-	private GoodTypeValidator() {}
-	
-	@Override
-	void validate(GoodTypeWrapper t) throws ValidatorException {
+	def validate(GoodTypeWrapper t) throws ValidatorException {
 		if (t==null) 
-			throw new ValidatorException(Constants.objectIsNull, "objectIsNull")
+			throw new ValidatorException(errorCode: Constants.objectIsNull, comment: "objectIsNull")
 		if (t.getName()==null || t.getName().trim().length()==0) 
-			throw new ValidatorException(Constants.fieldNotFilledProperly, "goodTypeNameEmpty")
+			throw new ValidatorException(errorCode: Constants.fieldNotFilledProperly, comment:  "goodTypeNameEmpty")
 	}
 	
 }

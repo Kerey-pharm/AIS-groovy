@@ -48,7 +48,7 @@ class GoodRS {
 	@POST
 	void createGood(GoodWrapper obj) {
 		try {
-            GoodValidator.validator.validate(obj)
+            GoodValidator.instance.validate(obj)
 			bean.createGood(obj)
 		} catch (ValidatorException ex) {
 			try {

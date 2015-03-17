@@ -47,7 +47,7 @@ class LocationRS {
 	@POST
 	void createLocation(LocationWrapper location) {
 		try {
-            LocationValidator.validator.validate(location)
+            LocationValidator.instance.validate(location)
 			bean.createLocation(location)
 		}
 		catch (ValidatorException ex) {
