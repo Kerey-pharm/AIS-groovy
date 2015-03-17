@@ -18,17 +18,16 @@ class GoodTypeEJB {
 	@Resource(mappedName = "java:jboss/drugstoreEntityManagerFactory")
     def emf
 	
-	void createGoodType(GoodTypeWrapper type) {
-		def em
+	def createGoodType(GoodTypeWrapper type) {
+		def em = emf.createEntityManager()
 		try {
-			em = emf.createEntityManager()
 			def list = em.createQuery("from GoodType where lower(name)=:text1")
 					.setParameter("text1", type.name.toLowerCase())
 					.getResultList()
 			if (list.size()>0)
 				throw new ServicesException(Constants.objectExists, "GoodType with name:${type.name} exists")
 			def obj = new GoodType(name: type.name)
-			em.persist(obj)
+			em.persist obj
 		}
 		finally {
 			if (em!=null && em.isOpen())
@@ -36,14 +35,14 @@ class GoodTypeEJB {
 		}
 	}
 	
-	void deleteGoodType(Long id) {
+	def deleteGoodType(Long id) {
 		def em = null
 		try {
 			em = emf.createEntityManager()
 			def obj = em.find(GoodType.class, id)
 			if (obj==null)
 				throw new ServicesException(Constants.objectIsNull, "GoodType with ID:${id} is NULL")
-			em.remove(obj)
+			em.remove obj
 		}
 		finally {
             if (em!=null && em.isOpen())
@@ -51,7 +50,7 @@ class GoodTypeEJB {
 		}
 	}
 	
-	List<GoodTypeWrapper> getGoodTypeList(Boolean paged, Integer pageNum, Integer perPage) {
+	def getGoodTypeList(Boolean paged, Integer pageNum, Integer perPage) {
 		def em
 		def result = []
 		try {
@@ -72,7 +71,7 @@ class GoodTypeEJB {
         result
 	}
 
-	void changeGoodTypeProperty(Long id, GoodTypeProperty property, String newValue) {
+	def changeGoodTypeProperty(Long id, GoodTypeProperty property, String newValue) {
 		def em = null
 		try {
 			em = emf.createEntityManager()
@@ -85,8 +84,7 @@ class GoodTypeEJB {
 				.executeUpdate()
 		}
 		finally {
-            if (em!=null && em.isOpen())
-                em.close()
+            !(em!=null && em.isOpen()) ?: em.close()
 		}
 	}
 }

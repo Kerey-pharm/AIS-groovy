@@ -5,8 +5,8 @@ allprojects {
     targetCompatibility = 1.8
 
     //project.ext.deployment = "../totalBuild"
-    //project.ext.deployment = "/Users/Alina/github/jboss-eap-6.4/standalone/deployments"
-    project.ext.deployment = "C:/git/jboss-eap-6.4.0.Beta/jboss-eap-6.4/standalone/deployments"
+    project.ext.deployment = "/Users/Alina/github/jboss-eap-6.4/standalone/deployments"
+    //project.ext.deployment = "C:/git/jboss-eap-6.4.0.Beta/jboss-eap-6.4/standalone/deployments"
 
     repositories {
         maven {

@@ -3,3 +3,5 @@ include 'persistence'
 include 'interfaces'
 include 'services'
 
+include 'services-scala'
+
