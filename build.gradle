@@ -28,7 +28,7 @@ allprojects {
         }
     }
 
-    if (['services','services-scala'].contains(project.name)) {
+    if (['services'].contains(project.name)) {
         apply plugin: 'war'
         task deploy (type: Copy, dependsOn: build) {
             from war.archivePath

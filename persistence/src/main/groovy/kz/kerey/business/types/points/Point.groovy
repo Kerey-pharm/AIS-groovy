@@ -1,6 +1,5 @@
 package kz.kerey.business.types.points
 
-import javax.persistence.Column
 import javax.persistence.DiscriminatorColumn
 import javax.persistence.DiscriminatorType
 import javax.persistence.DiscriminatorValue

@@ -46,7 +46,7 @@ class Task {
 	String taskName
 	String taskComment
     Date initialDate
-    Date finishDate;
+    Date finishDate
     Date deadlineDate
     String barcode
 

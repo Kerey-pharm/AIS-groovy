@@ -10,7 +10,7 @@ abstract class BarcodeTool {
 	
 	def static logger = Logger.getLogger(BarcodeTool.class.name)
 	
-	static String getBarcodeValue(Long number) {
+	static def getBarcodeValue(Long number) {
 		if (number==null) return null
 		def result = String.valueOf(number)
 		while (result.length() < 12)
@@ -18,7 +18,7 @@ abstract class BarcodeTool {
 		result
 	}
 	
-	static Long getBarcodeNumber(String barcode) {
+	static def getBarcodeNumber(String barcode) {
 		try {
 			def result = Long.valueOf(barcode)
 			return result
