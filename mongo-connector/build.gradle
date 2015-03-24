@@ -1,0 +1,10 @@
+apply plugin: 'groovy'
+version '1.0.0.0'
+
+dependencies {
+    compile 'com.gmongo:gmongo:1.5',
+            //'org.springframework.data:spring-data-mongodb:1.7.0.RELEASE'
+            'org.jongo:jongo:1.1'
+
+
+}
